@@ -1,0 +1,39 @@
+<div class="add-task modal overlay active">
+    <form class="form" [formGroup]="addTaskForm" (ngSubmit)="onSubmit()">
+        <h2 class="title">Thêm nhiệm vụ</h2> <i class="add-task overlay-close fal fa-times"></i>
+        <div class="form-group">
+            <input type="text" id="name" formControlName="name" class="form-control" placeholder="Tên">
+        </div>
+        <div class="form-group">
+            <input type="text" id="describe" formControlName="describe" class="form-control" placeholder="Mô tả">
+        </div>
+        <div class="form-select">
+            <select name="project" id="project" formControlName="project">
+                <option value="" hidden>Dự án</option>
+                <option *ngFor="let project of listProject" value="{{project._id}}">
+                    {{project.name}}
+                </option>
+            </select>
+        </div>
+        <div class="form-select">
+            <select name="member" id="member" formControlName="member">
+                <option value="" hidden>Người thực hiện</option>
+                <option *ngFor="let member of listMember" value="{{member._id}}">
+                    {{member.lastName}} {{member.firstName}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <input type="text" id="priority" formControlName="priority" class="form-control" placeholder="Độ ưu tiên">
+        </div>
+        <div class="form-check">
+            <label for="active">
+                <input type="radio" formControlName="status" name="status" value="0" id="active">Active
+            </label>
+            <label for="inactive">
+                <input type="radio" formControlName="status" name="status" value="1" id="inactive" >Inactive
+            </label>
+        </div>
+        <button style="margin: 0 0 0 auto;" type="submit" class="btn size-s" class="btn size-s">Thêm</button>
+    </form>
+</div>

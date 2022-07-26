@@ -1,0 +1,87 @@
+<div class="table">
+    <div class="">
+        <h3 class="title" style="text-align: center; margin-bottom: 24px; font-size: 3rem">Thông tin người dùng</h3>
+    </div>
+    <div class="t-body">
+        <div class="row">
+            <div class="col l-4">
+                <img src="assets/img/default.jpg" alt="Default Avatar">
+            </div>
+            <div class="col l-3">
+                <h4>Họ tên</h4>
+                <h4>Email</h4>
+                <h4>Khu vực</h4>
+                <h4>Vai trò</h4>
+            </div>
+            <div class="col l-5">
+                <h4>{{userInfo.lastName}} {{userInfo.firstName}}</h4>
+                <h4>{{userInfo.email}}</h4>
+                <h4>Miền {{area(userInfo.area)}}</h4>
+                <h4>{{role(userInfo.role)}}</h4>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="margin-top: 24px" class="table">
+    <div class="">
+        <h3 class="title" style="margin-bottom: 24px">Chi tiết</h3>
+    </div>
+    <div class="t-body">
+        <form class="row">
+            <div class="col l-4">
+                <h3 style="font-size: 1.4rem; display: flex; align-items: center; height: 100%;">Họ tên</h3>
+            </div>
+            <div class="col l-8">
+                <div class="row">
+                    <div class="col l-6">
+                        <div class="form-group">
+                            <input type="text" id="last-name" value="{{userInfo.lastName}}" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col l-6">
+                        <div class="form-group">
+                            <input type="text" id="first-name" value="{{userInfo.firstName}}" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col l-4">
+                <h3 style="font-size: 1.4rem; display: flex; align-items: center; height: 100%;">Email</h3>
+            </div>
+            <div class="col l-8">
+                <div class="form-group">
+                    <input type="text" id="email" class="form-control" value="{{userInfo.email}}">
+                </div>
+            </div>
+            <div class="col l-4">
+                <h3 style="font-size: 1.4rem; display: flex; align-items: center; height: 100%;">Khu vực</h3>
+            </div>
+            <div class="col l-8">
+                <div class="form-check">
+                    <label *ngFor="let area of listArea" for="{{area.value}}">
+                        <input type="radio" name="area" checked="{{area.value == userInfo.area ? 'checked' : ''}}" value="{{area.value}}" id="{{area.value}}" >{{area.name}}
+                    </label>
+                </div>
+            </div>
+            <div class="col l-4">
+                <h3 style="font-size: 1.4rem; display: flex; align-items: center; height: 100%;">Vai trò</h3>
+            </div>
+            <div class="col l-8">
+                <div class="form-check">
+                    <label for="admin">
+                        <input type="radio" name="role" value="0" id="admin" checked="{{0 == userInfo.role ? 'checked' : ''}}">Quản trị viên
+                    </label>
+                    <label for="leader">
+                        <input type="radio" name="role" value="1" id="leader" checked="{{1 == userInfo.role ? 'checked' : ''}}">Nhóm trưởng
+                    </label>
+                    <label for="member">
+                        <input type="radio" name="role" value="2" id="member" checked="{{2 == userInfo.role ? 'checked' : ''}}">Thành viên
+                    </label>
+                </div>
+            </div>
+            <div style="display: flex; justify-content: flex-end;" class="col l-12">
+                <button class="btn">Lưu thay đổi</button>
+            </div>
+        </form>
+    </div>
+</div>

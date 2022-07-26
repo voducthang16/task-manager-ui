@@ -1,0 +1,54 @@
+<div class="table">
+    <button (click)="changeTaskStatus()" class="btn add-project"><i class="fal fa-plus"></i>Thêm</button>
+    <div class="t-header">
+        <h3 class="title">Danh sách nhiệm vụ</h3>
+        <!-- <div class="toolbar">
+            <h4 data-role="all" class="role-tab active">Tất cả</h4>
+            <h4 data-role="0" class="role-tab">Quản trị viên</h4>
+            <h4 data-role="1" class="role-tab">Trưởng nhóm</h4>
+            <h4 data-role="2" class="role-tab">Thành viên</h4>
+        </div> -->
+    </div>
+    <div class="t-body">
+        <table>
+            <thead>
+                <tr>
+                    <th width="5%">#</th>
+                    <th width="20%">Tên</th>
+                    <th width="20%">Dự án</th>
+                    <th width="20%">Mô tả</th>
+                    <th style="text-align: center" width="15%">Người thực hiện</th>
+                    <th width="10%">Ưu tiên</th>
+                    <th width="10%">Actions</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let task of listTask; let i = index;">
+                <tr>
+                    <td>{{i+1}}</td>
+                    <td style="line-height: 1.2" class="bold">{{task.name}}</td>
+                    <td>{{task.projectId.name}}</td>
+                    <td style="line-height: 1.2">{{task.describe}}</td>
+                    <td style="text-align: center">{{task.memberId.lastName}} {{task.memberId.firstName}}</td>
+                    <td>{{task.priority}}</td>
+                    <td>
+                        <i class="fal fa-info"></i>
+                        <i [attr.data-task-id]="task._id" class="role-button fal fa-pencil"></i>
+                        <i [attr.data-task-id]="task._id" class="delete-button fal fa-times"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div *ngIf="addTaskStatus">
+    <app-add-task (hideModal)="hideModal($event)"></app-add-task>
+</div>
+
+<div *ngIf="updateTaskStatus">
+    <app-update-task [taskId]="taskId" (hideUpdate)="hideUpdateModal($event)" ></app-update-task>
+</div>
+
+<div *ngIf="deleteTaskStatus">
+    <app-delete-task [taskId]="taskId" (hideDelete)="hideDeleteModal($event)"></app-delete-task>
+</div>

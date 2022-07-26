@@ -1,0 +1,21 @@
+<div class="app">
+    <app-sidebar (componentActive)="componentActive($event)"></app-sidebar>
+    <main style="padding: 63px 0 0 264px" [ngSwitch]="true">
+        <app-header [component]="component"></app-header>
+        <div class="body" *ngSwitchCase="component == 'list-user'">
+            <app-list-user></app-list-user>
+        </div>
+        <div class="body" *ngSwitchCase="component == 'list-project-admin'">
+            <app-list-project-admin></app-list-project-admin>
+        </div>
+        <div class="body" *ngSwitchCase="component == 'list-task-admin'">
+            <app-list-task-admin></app-list-task-admin>
+        </div>
+        <div class="body" *ngSwitchCase="component == 'info-user'">
+            <app-info-user></app-info-user>
+        </div>
+        <div class="body" *ngSwitchDefault>
+            <app-dashboard></app-dashboard>
+        </div>
+    </main>
+</div>

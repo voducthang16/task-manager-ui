@@ -1,0 +1,34 @@
+<div class="update-task modal overlay active">
+    <form class="form" (ngSubmit)="submitForm()">
+        <h2 class="title">Cập nhật nhiệm vụ</h2> <i class="update-task overlay-close fal fa-times"></i>
+        <div class="form-group">
+            <input type="text" id="task-name" name="task-name" [(ngModel)]="task.name" class="form-control" placeholder="Tên nhiệm vụ">
+        </div>
+        <div class="form-select">
+            <select name="project" id="project" [(ngModel)]="project._id">
+                <option hidden></option>
+                <option *ngFor="let project of listProject" value="{{project._id}}">{{project.name}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <input type="text" id="describe" name="describe" [(ngModel)]="task.describe" class="form-control" placeholder="Mô tả">
+        </div>
+        <div class="form-select">
+            <select name="member" id="member" [(ngModel)]="member._id">
+                <option *ngFor="let member of listMember" value="{{member._id}}">{{member.lastName}} {{member.firstName}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <input type="number" id="priority" name="priority" [(ngModel)]="task.priority" class="form-control" placeholder="Ưu tiên">
+        </div>
+        <div class="form-check">
+            <label for="active">
+                <input type="radio" name="status" [checked]="task.status == 0 ? true : false" value="0" id="active">Active
+            </label>
+            <label for="inactive">
+                <input type="radio" name="status" [checked]="task.status == 1 ? true : false" value="1" id="inactive" >Inactive
+            </label>
+        </div>
+        <button style="margin: 0 0 0 auto;" type="submit" class="btn size-s">Cập nhật</button>
+    </form>
+</div>

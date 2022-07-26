@@ -1,0 +1,36 @@
+<div class="update-user modal overlay active">
+    <form class="form">
+        <h2 class="title">Cập nhật người dùng</h2> <i class="update-user overlay-close fal fa-times"></i>
+        <div class="row">
+            <div class="col l-6">
+                <div class="form-group">
+                    <input type="text" id="last-name"  name="last-name"  [(ngModel)]="user.lastName" class="form-control" placeholder="Họ">
+                </div>
+            </div>
+            <div class="col l-6">
+                <div class="form-group">
+                    <input type="text" id="first-name" name="first-name" [(ngModel)]="user.firstName"  class="form-control" placeholder="Tên">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="text" id="email" name="email" [(ngModel)]="user.email"  class="form-control" placeholder="Email">
+        </div>
+        <div class="form-select">
+            <select name="area" id="area" [(ngModel)]="user.area">
+                <option hidden>Khu vực</option>
+                <option *ngFor="let area of listArea" value="{{area.value}}">Miền {{area.name}}</option>
+            </select>
+        </div>
+        <div class="form-select">
+            <select name="role" id="role" [(ngModel)]="user.role">
+                <option hidden>Vai trò</option>
+                <option value="0">Quản trị viên</option>
+                <option value="1">Nhóm trưởng</option>
+                <option value="2">Nhân viên</option>
+            </select>
+        </div>
+        
+        <button style="margin: 0 0 0 auto;" type="button" class="btn size-s" (click)="updateUser($event)">Cập nhật</button>
+    </form>
+</div>

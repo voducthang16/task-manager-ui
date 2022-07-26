@@ -1,0 +1,36 @@
+<section class="register-wrapper">
+    <div class="container wide">
+        <div class="row">
+            <a href="/">
+                <img src="../../../assets/img/logo.png" alt="LOGO IMAGE">
+            </a>
+            <form>
+                <div style="flex-direction: row !important;" class="row">
+                    <div class="col l-6">
+                        <div class="form-group">
+                            <input tabindex="1" type="text" id="last-name" class="form-control" placeholder="Họ">
+                        </div>
+                    </div>
+                    <div class="col l-6">
+                        <div class="form-group">
+                            <input tabindex="2" type="text" id="first-name" class="form-control" placeholder="Tên">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input tabindex="3" type="text" id="email" class="form-control" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <input tabindex="4" type="password" id="password" class="form-control" placeholder="Mật khẩu">
+                </div>
+                <div class="form-check">
+                    <label *ngFor="let area of listAreas" for="{{area.value}}">
+                        <input type="radio" name="area" value="{{area.value}}" id="{{area.value}}">{{area.name}}
+                    </label>
+                </div>
+                <button class="btn w-100" (click)="createUser($event)">Đăng ký</button>
+                <p>Bạn đã có tài khoản? <a routerLink="/login">Đăng nhập</a></p>
+            </form>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,19 @@
+<div class="header">
+    <div class="col l-6">
+        <form action="search" class="search" id="search-form">
+            <input class="search-control" name="keyword" [(ngModel)]="keyword" (keyup)="getKeyword(keyword)"  type="text" id="search" placeholder="Tìm kiếm..." required="">
+            <i class="search-btn fal fa-search search-icon"></i>
+        </form>
+    </div>
+    <div class="col l-6">
+        <div class="user">
+            <div class="wrapper">
+                <img class="avatar" src="assets/img/avatar.jpg" alt="Avatar" />
+                <div class="info">
+                    <h2>Vo Duc Thang</h2>
+                    <p>Administrator</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

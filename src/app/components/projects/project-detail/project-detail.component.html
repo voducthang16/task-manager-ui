@@ -1,0 +1,78 @@
+<div class="modal overlay active detail">
+    <form style="width: 660px" class="form">
+        <h2 class="title">Dự án: {{project.name}}</h2> <i class="overlay-close detail fal fa-times"></i>
+        <div class="form-group">
+            <div class="row">
+                <div class="col l-6">
+                    <h4 class="title-non-input">Nhóm trưởng: {{leader.lastName}} {{leader.firstName}}</h4>
+                </div>
+                <div class="col l-6">
+                    <h4 class="title-non-input">Thành viên: 
+                        <h5 style="line-height: 1.2" *ngFor="let i of members">{{i.lastName}} {{i.firstName}}</h5>
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col l-6">
+                    <h4 class="title-non-input">Ngày bắt đầu: {{project.startDate | date:"dd/MM/Y"}}</h4>
+                </div>
+                <div class="col l-6">
+                    <h4 class="title-non-input">Ngày kết thúc: {{project.endDate | date:"dd/MM/Y"}}</h4>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col l-6">
+                    <h4 class="title-non-input">Giá thành: {{project.price | currency:"VND"}}</h4>
+                </div>
+                <div class="col l-6">
+                    <div style="
+                        padding: 14px 16px;
+                        background-color: #F5F8FA;
+                        border-radius: 8px;
+                        font-weight: 300;
+                        color: #5E6278;
+                        margin-bottom: 0;" 
+                    class="form-check">
+                        <label for="active">
+                            <input type="radio" checked="{{project.status == 0 ? 'true' : ''}}" name="status" value="0" id="active">Active
+                        </label>
+                        <label for="inactive">
+                            <input type="radio" checked="{{project.status == 1 ? 'true' : ''}}" name="status" value="1" id="inactive" >Inactive
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div style="padding: 0 !important" class="table">
+                <div class="t-body">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th width="5%">#</th>
+                                <th width="20%">Tên</th>
+                                <th width="20%">Mô tả</th>
+                                <th style="text-align: center" width="15%">Người thực hiện</th>
+                                <th width="10%">Ưu tiên</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let taskItem of task; let i = index;">
+                            <tr>
+                                <td>{{i+1}}</td>
+                                <td style="line-height: 1.2" class="bold">{{taskItem.name}}</td>
+                                <td style="line-height: 1.2">{{taskItem.describe}}</td>
+                                <td style="text-align: center">{{taskItem.memberId.lastName}} {{taskItem.memberId.firstName}}</td>
+                                <td>{{taskItem.priority}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

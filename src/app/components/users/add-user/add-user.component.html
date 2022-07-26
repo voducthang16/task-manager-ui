@@ -1,0 +1,35 @@
+<div class="add-user modal overlay active">
+    <form #form="ngForm" class="form" (ngSubmit)="onSubmit(form.value)">
+        <h2 class="title">Thêm nhân viên</h2> <i class="add-user overlay-close fal fa-times"></i>
+        <div class="row">
+            <div class="col l-6">
+                <div class="form-group">
+                    <input type="text" id="last-name" name="lastName" ngModel class="form-control" placeholder="Họ">
+                </div>
+            </div>
+            <div class="col l-6">
+                <div class="form-group">
+                    <input type="text" id="first-name" name="firstName" ngModel class="form-control" placeholder="Tên">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="text" id="email" class="form-control" name="email" ngModel placeholder="Email">
+        </div>
+        <div class="form-select">
+            <select name="area" id="area" ngModel>
+                <option value="" hidden>Khu vực</option>
+                <option *ngFor="let area of listAreas" value="{{area.value}}">Miền {{area.name}}</option>
+            </select>
+        </div>
+        <div class="form-select">
+            <select name="role" id="role" ngModel>
+                <option value="" hidden>Vai trò</option>
+                <option value="0">Quản trị viên</option>
+                <option value="1">Nhóm trưởng</option>
+                <option value="2">Nhân viên</option>
+            </select>
+        </div>
+        <button style="margin: 0 0 0 auto;" type="submit" class="btn size-s">Thêm</button>
+    </form>
+</div>

@@ -1,0 +1,24 @@
+<h2 style="font-size: 2.4rem; margin-bottom: 16px;">Xin chào admin</h2>
+
+<div class="row">
+    <div class="col l-3">
+        <div class="table">
+            Dự án: {{projectQuantity}}
+        </div>
+    </div>
+    <div class="col l-3">
+        <div class="table">
+            Nhiệm vụ: {{taskQuantity}}
+        </div>
+    </div>
+    <div class="col l-3">
+        <div class="table">
+            Thành viên: {{userQuantity}}
+        </div>
+    </div>
+    <div class="col l-3">
+        <div class="table">
+            Chi phí: {{totalMoney | currency: 'VND'}}
+        </div>
+    </div>
+</div>

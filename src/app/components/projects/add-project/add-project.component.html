@@ -1,0 +1,48 @@
+<div class="modal overlay active add">
+    <form class="form">
+        <h2 class="title">Thêm dự án</h2> <i class="overlay-close add fal fa-times"></i>
+        <div class="form-group">
+            <input type="text" id="name" class="form-control" placeholder="Tên">
+        </div>
+        <div class="form-select">
+            <select name="leader" id="leader">
+                <option hidden>Chọn trưởng nhóm</option>
+                <option *ngFor="let leader of listLeader" value="{{leader._id}}">{{leader.lastName}} {{leader.firstName}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <h4 class="title-non-input">Chọn thành viên</h4>
+            <div style="margin-left: 0; margin-right: 0" class="row form-checkbox">
+                <label *ngFor="let member of listMember" class="col l-6 checkbox-control">
+                    <span class="text">{{member.lastName}} {{member.firstName}}</span>
+                    <input type="checkbox" value="{{member._id}}">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="text" id="price" class="form-control" placeholder="Giá thành">
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col l-6">
+                    <h4 class="title-non-input">Ngày bắt đầu</h4>
+                    <input type="date" class="form-control form-date" name="start" id="start-date">
+                </div>
+                <div class="col l-6">
+                    <h4 class="title-non-input">Ngày kết thúc</h4>
+                    <input type="date" class="form-control form-date" name="end" id="end-date">
+                </div>
+            </div>
+        </div>
+        <div class="form-check">
+            <label for="active">
+                <input type="radio" name="status" value="0" id="active">Active
+            </label>
+            <label for="inactive">
+                <input type="radio" name="status" value="1" id="inactive" >Inactive
+            </label>
+        </div>
+        <button style="margin: 0 0 0 auto;" type="button" class="btn size-s" (click)="createProject($event)">Thêm</button>
+    </form>
+</div>

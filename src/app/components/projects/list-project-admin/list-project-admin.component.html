@@ -1,0 +1,58 @@
+<div class="table">
+    <button (click)="addProjectClick()" class="btn add-project"><i class="fal fa-plus"></i>Thêm</button>
+    <div class="t-header">
+        <h3 class="title">Danh sách dự án</h3>
+        <!-- <div class="toolbar">
+            <h4 data-role="all" class="role-tab active">Tất cả</h4>
+            <h4 data-role="0" class="role-tab">Quản trị viên</h4>
+            <h4 data-role="1" class="role-tab">Trưởng nhóm</h4>
+            <h4 data-role="2" class="role-tab">Thành viên</h4>
+        </div> -->
+    </div>
+    <div class="t-body">
+        <table>
+            <thead>
+                <tr>
+                    <th width="5%">#</th>
+                    <th width="20%">Tên</th>
+                    <th width="15%">Nhóm trưởng</th>
+                    <th width="16%">Thành viên</th>
+                    <th width="22%">Thời gian</th>
+                    <th width="12%">Tiền</th>
+                    <th width="10%">Actions</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let project of listProject; let i = index;">
+                <tr>
+                    <td>{{i+1}}</td>
+                    <td class="bold">{{project.name}}</td>
+                    <td>{{project.leader.lastName}} {{project.leader.firstName}}</td>
+                    <td style="line-height: 1.2" [innerHTML]="renderMembers(project.members)"></td>
+                    <td class="bold">{{project.startDate | date:'dd/MM/Y'}} - {{project.endDate | date:'dd/MM/Y'}}</td>
+                    <td>{{project.price | currency:'VND'}}</td>
+                    <td>
+                        <i (click)="getProjectId($event)" id="{{project._id}}" class="fal fa-info"></i>
+                        <i [attr.data-project-id]="project._id" class="role-button fal fa-pencil"></i>
+                        <i [attr.data-project-id]="project._id" class="delete-button fal fa-times"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div *ngIf="addProjectStatus">
+    <app-add-project (hideModal)="hideModal($event)"></app-add-project>
+</div>
+
+<div *ngIf="projectDetailStatus">
+    <app-project-detail [id]="projectId"></app-project-detail>
+</div>
+
+<div *ngIf="updateModalStatus">
+    <app-update-project [id]="projectId" (hideUpdate)="hideUpdateModal($event)"></app-update-project>
+</div>
+
+<div *ngIf="deleteModalStatus">
+    <app-delete-project [id]="projectId" (hideDelete)="hideDeleteModal($event)"></app-delete-project>
+</div>
